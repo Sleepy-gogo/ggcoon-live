@@ -1,23 +1,28 @@
-<h1 align="center">GGCoon.TV</h1>
+<h1 align="center">GGCoon.TV<img alt="Comet" src="https://fonts.gstatic.com/s/e/notoemoji/latest/2604_fe0f/512.webp" width="40"></h1>
 
 <p align="center">
-  Built using:
+  <b>Built using:</b><br/>
+  <img alt="Next JS" src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
+  <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
+  <img alt="Prisma" src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white">
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white">
+  <img alt="Bun" src="https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white"><br/>
+  As well as <b>Clerk</b> for authentication,<br/>
+  <b>Zustand</b> for state management, and<br/>
+  <b>shadcn/ui</b> components
 </p>
 
-- ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-- ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-- ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
-- ![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)
-- Zustand for state management
-- ShadCN UI Components
-- Clerk for authentication
+<p align="center">
+  
+</p>
 
-## What is GGCoon.TV?
+
+## 📌 What is GGCoon.TV?
 
 This is a simple Twitch Clone, made for learning purposes. Feel free to fork this repo, and add your own features, or just use it as a starter for your own project.
 
-## How to use it?
+## ⚙ How to use it?
 
 ### Prerequisites
 
@@ -96,12 +101,12 @@ Or start the production server by running:
 npm run start
 ```
 
-## Features
+## 🍁 Features
 
 - Authentication
 - User Profiles
 
-## Planned Additions
+## 📝 Planned Additions
 
 - Streaming
 - Chat
