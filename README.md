@@ -25,7 +25,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) (Or any other package manager of your liking)
-- [Prisma CLI](https://www.prisma.io/docs/getting-started/installation)
+- [Prisma CLI](https://www.prisma.io/docs/orm/tools/prisma-cli#installation)
 
 And that you have a Clerk account.
 
