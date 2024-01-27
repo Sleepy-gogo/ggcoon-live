@@ -104,10 +104,11 @@ npm run start
 
 - Authentication
 - User Profiles
+- Following Users
+- Blocking Users
 
 ## 📝 Planned Additions
 
 - Streaming
 - Chat
 - Profile Page
-- Blocking Users

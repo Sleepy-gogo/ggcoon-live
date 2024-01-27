@@ -3,6 +3,7 @@ import { isFollowingUser } from '@/lib/follow-service';
 import { getUserByUsername } from '@/lib/user-service';
 import { notFound } from 'next/navigation';
 import { Actions } from './_components/actions';
+import { isBlockedByUser, userIsBlockedBy } from '@/lib/block-service';
 
 interface UserPageProps {
   params: {
@@ -16,7 +17,14 @@ async function UserPage({ params: { username } }: UserPageProps) {
   if (!user) {
     notFound();
   }
+  const pageBlocked = await userIsBlockedBy(user.id);
+
+  if (pageBlocked) {
+    notFound();
+  }
+
   const isFollowing = await isFollowingUser(user.id);
+  const isBlocked = await isBlockedByUser(user.id);
 
   return (
     <div>
@@ -28,7 +36,11 @@ async function UserPage({ params: { username } }: UserPageProps) {
         imageUrl={user?.imageUrl}
         size="lg"
       />
-      <Actions isFollowing={isFollowing} userId={user?.id} />
+      <Actions
+        isFollowing={isFollowing}
+        isBlocked={isBlocked}
+        userId={user?.id}
+      />
     </div>
   );
 }

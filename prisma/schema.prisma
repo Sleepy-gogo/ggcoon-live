@@ -19,22 +19,39 @@ model User {
   bio            String? @db.Text
   following      Follow[] @relation("Following")
   followers      Follow[] @relation("Followed")
+  blocked        Block[] @relation("Blocked")
+  blockedBy      Block[] @relation("BlockedBy")
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
 
 model Follow {
-  id        String  @id @default(uuid())
-  followerId String
-  followingId String
+  id             String  @id @default(uuid())
+  followerId     String
+  followingId    String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   follower User @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
   following User @relation(name:"Followed",fields: [followingId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
   @@unique([followerId, followingId])
   @@index([followerId])
   @@index([followingId])
+}
+
+model Block {
+  id             String  @id @default(uuid())
+  blockerId      String
+  blockedId      String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  blocker User @relation(name: "Blocked", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked User @relation(name: "BlockedBy", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@unique([blockerId, blockedId])
+  @@index([blockerId])
+  @@index([blockedId])
 }
