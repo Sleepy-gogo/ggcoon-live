@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 import { ThemeProvider } from '@/components/theme-provider';
@@ -27,6 +28,7 @@ export default function RootLayout({
             forcedTheme="dark"
             storageKey="ggcoon-theme"
           >
+            <Toaster theme="light" position="bottom-center" closeButton />
             {children}
           </ThemeProvider>
         </body>

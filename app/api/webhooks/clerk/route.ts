@@ -41,34 +41,43 @@ export async function POST(req: Request) {
 
   switch (eventType) {
     case 'user.created':
-      await db.user.create({
-        data: {
-          externalUserId: payload.data.id,
-          username: payload.data.username,
-          imageUrl: payload.data.image_url,
-        },
-      });
+      try {
+        await db.user.create({
+          data: {
+            externalUserId: payload.data.id,
+            username: payload.data.username,
+            imageUrl: payload.data.image_url,
+          },
+        });
+      } catch {
+        return new Response('User already exists', { status: 400 });
+      }
       break;
-
     case 'user.deleted':
-      await db.user.delete({
-        where: {
-          externalUserId: payload.data.id,
-        },
-      });
+      try {
+        await db.user.delete({
+          where: {
+            externalUserId: payload.data.id,
+          },
+        });
+      } catch {
+        return new Response('User not found', { status: 404 });
+      }
       break;
-
     case 'user.updated':
-      await db.user.update({
-        where: {
-          externalUserId: payload.data.id,
-        },
-        data: {
-          username: payload.data.username,
-          imageUrl: payload.data.image_url,
-        },
-      });
-
+      try {
+        await db.user.update({
+          where: {
+            externalUserId: payload.data.id,
+          },
+          data: {
+            username: payload.data.username,
+            imageUrl: payload.data.image_url,
+          },
+        });
+      } catch {
+        return new Response('User not found', { status: 404 });
+      }
     default:
       break;
   }

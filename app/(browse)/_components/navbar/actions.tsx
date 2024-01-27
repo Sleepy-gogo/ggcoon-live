@@ -1,8 +1,15 @@
-import { SignInButton, UserButton, currentUser } from '@clerk/nextjs';
+import {
+  ClerkLoading,
+  SignInButton,
+  UserButton,
+  currentUser,
+} from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Clapperboard } from 'lucide-react';
+import { Suspense } from 'react';
+import { UserAvatarSkeleton } from '@/components/user-avatar';
 
 export async function Actions() {
   const user = await currentUser();
@@ -31,6 +38,10 @@ export async function Actions() {
           </Button>
         </div>
       )}
+      <ClerkLoading>
+        <UserAvatarSkeleton size="default" />
+      </ClerkLoading>
+
       <UserButton afterSignOutUrl="/" />
     </div>
   );
