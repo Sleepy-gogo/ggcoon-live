@@ -51,7 +51,7 @@ export function BlockButton({ isBlocked, userId }: BlockButtonProps) {
 
   return (
     <HoverableButton
-      variant={isBlocked ? 'destructive-outline' : 'destructive'}
+      variant="destructive-outline"
       className="group w-28"
       disabled={isPending}
       onClick={blockButton}

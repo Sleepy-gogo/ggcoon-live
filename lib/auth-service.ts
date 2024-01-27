@@ -20,3 +20,27 @@ export async function getSelf() {
 
   return user;
 }
+
+export async function getSelfByUsername(username: string) {
+  const self = await currentUser();
+
+  if (!self || !self.username) {
+    throw new Error('Not logged in');
+  }
+
+  const user = await db.user.findUnique({
+    where: {
+      username,
+    },
+  });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  if (user.externalUserId !== self.id) {
+    throw new Error('Not authorized');
+  }
+
+  return user;
+}

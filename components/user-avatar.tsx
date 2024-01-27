@@ -36,7 +36,8 @@ export function UserAvatar({
     <div className="relative">
       <Avatar
         className={cn(
-          isLive ? 'ring-2 ring-rose-500 border border-background' : '',
+          'ring-2 ring-muted-foreground/30 border border-background',
+          isLive && 'ring-rose-500',
           avatarSizes({ size })
         )}
       >
