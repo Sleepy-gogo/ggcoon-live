@@ -17,7 +17,6 @@
   
 </p>
 
-
 ## 📌 What is GGCoon.TV?
 
 This is a simple Twitch Clone, made for learning purposes. Feel free to fork this repo, and add your own features, or just use it as a starter for your own project.
@@ -75,7 +74,7 @@ DIRECT_URL=your_direct_url_here
 
 > Clerk has a quick Next.js setup to get your public and secret keys.
 
-> When creating the Clerk Webhook, make sure you point to the right endpoint, as well as listen to the user events.
+> When creating the Clerk Webhook, make sure you point to the right endpoint, https:yourdomain.com/api/webhooks/clerk, as well as listen to the user events.
 
 3. Ensure you have the Prisma CLI installed, run the migrations, then generate the prisma client:
 
