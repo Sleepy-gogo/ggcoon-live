@@ -28,7 +28,11 @@ export default function RootLayout({
             forcedTheme="dark"
             storageKey="ggcoon-theme"
           >
-            <Toaster theme="light" position="bottom-center" closeButton />
+            <Toaster
+              theme="light"
+              position="bottom-center"
+              toastOptions={{ duration: 2000 }}
+            />
             {children}
           </ThemeProvider>
         </body>
