@@ -34,7 +34,7 @@ export function Search() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search"
-        className="rounded-r-none bg-[#1F2029] focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+        className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
       />
       {value && (
         <X

@@ -1,5 +1,6 @@
 'use client';
 
+import { Card } from '@/components/card';
 import { toast } from 'sonner';
 import { useTransition } from 'react';
 
@@ -28,25 +29,12 @@ export function ToggleCard({ field, value, label }: ToggleCardProps) {
   };
 
   return (
-    <div className="rounded-xl bg-muted p-6 max-w-5xl mr-auto">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-y-2">
-        <p className="font-semibold text-center sm:text-left shrink-0 min-w-0 text-balance">
-          {label}
-        </p>
-        <div className="space-y-2">
-          <Switch
-            disabled={isPending}
-            onCheckedChange={onChange}
-            checked={value}
-          />
-        </div>
-      </div>
-    </div>
+    <Card label={label}>
+      <Switch disabled={isPending} onCheckedChange={onChange} checked={value} />
+    </Card>
   );
 }
 
 export function ToggleCardSkeleton() {
-  return (
-    <Skeleton className="p-9 rounnded-xl w-full rounded-md max-w-5xl mr-auto" />
-  );
+  return <Skeleton className="p-9 w-full rounded-md max-w-5xl mr-auto" />;
 }
