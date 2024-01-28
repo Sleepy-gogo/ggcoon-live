@@ -72,18 +72,20 @@ DATABASE_URL=your_database_url_here # Make sure to update the prisma schema if y
 DIRECT_URL=your_direct_url_here
 ```
 
-> Clerk has a quick Next.js setup to get your public and secret keys.
+> Clerk has a quick **Next.js** setup to get your _public_ and _secret keys_.
 
-> When creating the Clerk Webhook, make sure you point to the right endpoint, https:yourdomain.com/api/webhooks/clerk, as well as listen to the user events.
+> When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https:yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
 
 3. Ensure you have the Prisma CLI installed, run the migrations, then generate the prisma client:
 
 ```bash
 npm install prisma -g
 
-npx prisma migrate dev # or `npx prisma migrate deploy` if you're in production
+npx prisma migrate dev
 
 npx prisma generate
+
+npx prisma db push
 ```
 
 ### Usage
@@ -106,9 +108,13 @@ npm run start
 - User Profiles
 - Following Users
 - Blocking Users
+- Dashboard for creators
 
 ## 📝 Planned Additions
 
 - Streaming
 - Chat
 - Profile Page
+- Moderators
+- Allow "Moderators" to access the creator's dashboard
+- Migrate to Auth.js
