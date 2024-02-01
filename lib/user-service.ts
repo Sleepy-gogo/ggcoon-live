@@ -7,3 +7,14 @@ export async function getUserByUsername(username: string) {
     },
   });
 }
+
+export async function getUserById(id: string) {
+  return await db.user.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      stream: true,
+    },
+  });
+}

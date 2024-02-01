@@ -41,6 +41,13 @@ export async function getRecommended() {
         },
       ],
     },
+    include: {
+      stream: {
+        select: {
+          isLive: true,
+        },
+      },
+    },
   });
 
   return users;

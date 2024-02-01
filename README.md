@@ -31,9 +31,10 @@ Before you begin, ensure you have the following installed on your machine:
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) (Or any other package manager of your liking)
 - [Prisma CLI](https://www.prisma.io/docs/orm/tools/prisma-cli#installation)
 
-And that you have a Clerk account.
+And that you have an account on:
 
 - [Clerk](https://clerk.com/)
+- [LiveKit](https://livekit.io/)
 
 ### Installation
 
@@ -57,24 +58,11 @@ cp .env.example .env
 
 - Update the file with your own values.
 
-```bash
-# Clerk credentials
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_public_key_here
-CLERK_SECRET_KEY=your_secret_key_here
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in #Keep this the same
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up #Keep this the same
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/ #Keep this the same
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/ #Keep this the same
-CLERK_WEBHOOK_SECRET=your_webhook_secret_here
-
-# Database credentials
-DATABASE_URL=your_database_url_here # Make sure to update the prisma schema if yours isn't postgres.
-DIRECT_URL=your_direct_url_here
-```
-
 > Clerk has a quick **Next.js** setup to get your _public_ and _secret keys_.
 
 > When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https:yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
+
+> You can also generate your _API keys_ in the settings tab on **Livekit**. Follow the indicated format in the example for the wss and api url.
 
 3. Ensure you have the Prisma CLI installed, run the migrations, then generate the prisma client:
 
@@ -115,4 +103,3 @@ npm run start
 - Profile Page
 - Moderators
 - Allow "Moderators" to access the creator's dashboard
-- Migrate to Auth.js

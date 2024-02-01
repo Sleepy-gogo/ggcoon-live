@@ -32,6 +32,9 @@ export async function getSelfByUsername(username: string) {
     where: {
       username,
     },
+    include: {
+      stream: true,
+    },
   });
 
   if (!user) {

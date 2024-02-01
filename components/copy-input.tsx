@@ -15,7 +15,7 @@ export function CopyInput({ value, type = 'text' }: CopyInputProps) {
   const [show, setShow] = useState(false);
   return (
     <div className="w-full flex items-center gap-x-2">
-      <div className="relative">
+      <div className="relative w-full">
         <Input
           value={value ?? ''}
           type={type === 'password' && show ? 'text' : type}

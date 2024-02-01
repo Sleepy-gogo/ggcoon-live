@@ -34,7 +34,3 @@ export function ToggleCard({ field, value, label }: ToggleCardProps) {
     </Card>
   );
 }
-
-export function ToggleCardSkeleton() {
-  return <Skeleton className="p-9 w-full rounded-md max-w-5xl mr-auto" />;
-}

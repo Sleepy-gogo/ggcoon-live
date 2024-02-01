@@ -1,11 +1,12 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { CardSkeleton } from '@/components/card';
 
-function ChatLoading() {
+function KeysLoading() {
   return (
     <div className="p-6">
-      <div className="mb-4">
+      <div className="mb-4 flex justify-between items-center">
         <Skeleton className="h-9 w-[200px]" />
+        <Skeleton className="h-9 w-[100px]" />
       </div>
       <div className="space-y-4">
         <CardSkeleton />
@@ -16,4 +17,4 @@ function ChatLoading() {
   );
 }
 
-export default ChatLoading;
+export default KeysLoading;
