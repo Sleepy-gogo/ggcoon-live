@@ -20,17 +20,9 @@ export function Live({ tracks }: LiveProps) {
 
   return (
     <div ref={wrapperRef} className="relative h-full flex">
-      <video
-        ref={videoRef}
-        width="100%"
-        height="auto"
-        autoPlay
-        playsInline
-        controls
-      />
-      {
-        // <Controls wrapperRef={wrapperRef} />
-      }
+      <video ref={videoRef} width="100%" autoPlay />
+
+      <Controls wrapperRef={wrapperRef} videoRef={videoRef} />
     </div>
   );
 }
