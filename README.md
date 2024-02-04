@@ -95,11 +95,11 @@ npm run start
 - Following Users
 - Blocking Users
 - Dashboard for creators
+- Streaming
+- Chat
 
 ## 📝 Planned Additions
 
-- Streaming
-- Chat
 - Profile Page
 - Moderators
 - Allow "Moderators" to access the creator's dashboard
