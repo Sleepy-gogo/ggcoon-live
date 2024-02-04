@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Send } from 'lucide-react';
 import { Hint } from '../hint';
+import { ChatExtra } from './chat-extra';
 
 interface ChatFormProps {
   value: string;
@@ -53,11 +54,11 @@ export function ChatForm({
     onSubmitAction();
   };
 
-  // if (isHidden) return null;
+  if (isHidden) return null;
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 p-3">
-      <ChatFormSkeleton />
+    <form onSubmit={onSubmit} className="flex flex-col p-3">
+      <ChatExtra isDelayed={isChatDelayed} followersOnly={followersOnly} />
       <div className="flex gap-1 items-center w-full">
         <Input
           value={value}

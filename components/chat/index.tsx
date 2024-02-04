@@ -12,6 +12,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { ChatHeader, ChatHeaderSkeleton } from './chat-header';
 import { ChatForm } from './chat-form';
+import { MessageList } from './message-list';
 
 interface ChatProps {
   viewerName: string;
@@ -64,17 +65,20 @@ export function Chat({
     <div className="flex flex-col bg-background border-l border-b pt-0 h-full lg:h-[calc(100vh-80px)] w-full">
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
-        <ChatForm
-          onSubmitAction={sendMessage}
-          value={value}
-          onChangeAction={setValue}
-          isHidden={isHidden}
-          streamOptions={{
-            isChatDelayed,
-            followersOnly,
-          }}
-          isFollowing={isFollowing}
-        />
+        <>
+          <MessageList messages={listMessages} />
+          <ChatForm
+            onSubmitAction={sendMessage}
+            value={value}
+            onChangeAction={setValue}
+            isHidden={isHidden}
+            streamOptions={{
+              isChatDelayed,
+              followersOnly,
+            }}
+            isFollowing={isFollowing}
+          />
+        </>
       )}
       {variant === ChatVariant.COMMUNITY && <p>Community</p>}
     </div>
