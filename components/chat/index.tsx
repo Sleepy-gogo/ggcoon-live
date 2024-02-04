@@ -1,6 +1,6 @@
 'use client';
 
-import { useChatbox } from '@/store/use-chatbox';
+import { useChatbox, ChatVariant } from '@/store/use-chatbox';
 import {
   useChat,
   useConnectionState,
@@ -11,6 +11,7 @@ import { ConnectionState } from 'livekit-client';
 import { useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { ChatHeader, ChatHeaderSkeleton } from './chat-header';
+import { ChatForm } from './chat-form';
 
 interface ChatProps {
   viewerName: string;
@@ -38,9 +39,9 @@ export function Chat({
   const [value, setValue] = useState('');
   const { chatMessages: rawMessages, send } = useChat();
 
-  const isOnline = connectionState === ConnectionState.Connected && participant;
-  const isHidden = !isOnline && !isOnline;
   const { isChatEnabled, isChatDelayed, followersOnly } = streamOptions;
+  const isOnline = connectionState === ConnectionState.Connected && participant;
+  const isHidden = !isChatEnabled || !isOnline;
 
   useEffect(() => {
     if (matches) {
@@ -52,8 +53,7 @@ export function Chat({
     return rawMessages.sort((a, b) => b.timestamp - a.timestamp);
   }, [rawMessages]);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const sendMessage = () => {
     if (!send) return;
 
     send(value);
@@ -63,6 +63,20 @@ export function Chat({
   return (
     <div className="flex flex-col bg-background border-l border-b pt-0 h-full lg:h-[calc(100vh-80px)] w-full">
       <ChatHeader />
+      {variant === ChatVariant.CHAT && (
+        <ChatForm
+          onSubmitAction={sendMessage}
+          value={value}
+          onChangeAction={setValue}
+          isHidden={isHidden}
+          streamOptions={{
+            isChatDelayed,
+            followersOnly,
+          }}
+          isFollowing={isFollowing}
+        />
+      )}
+      {variant === ChatVariant.COMMUNITY && <p>Community</p>}
     </div>
   );
 }
