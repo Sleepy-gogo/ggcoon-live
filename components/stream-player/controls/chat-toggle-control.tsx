@@ -14,7 +14,7 @@ export function ChatToggleButton() {
         className="text-white p-1.5 hover:bg-white/10 rounded-lg"
         onClick={onToggle}
       >
-        <Icon className="size-5 fill-white" />
+        <Icon className="size-5" />
       </button>
     </Hint>
   );

@@ -50,7 +50,7 @@ export function Chat({
     }
   }, [matches, setCollapsed]);
 
-  const listMessages = useMemo<ReceivedChatMessage[]>(() => {
+  const messages = useMemo<ReceivedChatMessage[]>(() => {
     return rawMessages.sort((a, b) => b.timestamp - a.timestamp);
   }, [rawMessages]);
 
@@ -66,7 +66,7 @@ export function Chat({
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
-          <MessageList messages={listMessages} />
+          <MessageList messages={messages} isHidden={isHidden} />
           <ChatForm
             onSubmitAction={sendMessage}
             value={value}
