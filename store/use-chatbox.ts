@@ -13,7 +13,7 @@ interface ChatStore {
   setVariant: (variant: ChatVariant) => void;
 }
 
-export const useChat = create<ChatStore>((set) => ({
+export const useChatbox = create<ChatStore>((set) => ({
   collapsed: false,
   variant: ChatVariant.CHAT,
   onToggle: () => set((state) => ({ collapsed: !state.collapsed })),

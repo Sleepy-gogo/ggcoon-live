@@ -11,15 +11,21 @@ interface CreatorPageProps {
 
 async function CreatorPage({ params: { username } }: CreatorPageProps) {
   const externalUser = await currentUser();
-  const user = await getSelfByUsername(username);
+  const user = await getSelfByUsername(username, true);
 
   if (!user || user.externalUserId !== externalUser?.id || !user.stream) {
     redirect('/');
   }
 
+  const streamOptions = {
+    isChatEnabled: user.stream.isChatEnabled,
+    isChatDelayed: user.stream.isChatDelayed,
+    followersOnly: user.stream.followersOnly,
+  };
+
   return (
-    <div className="md:p-6 h-full">
-      <StreamPlayer user={user} stream={user.stream} isFollowing />
+    <div className="h-full">
+      <StreamPlayer user={user} streamOptions={streamOptions} isFollowing />
     </div>
   );
 }

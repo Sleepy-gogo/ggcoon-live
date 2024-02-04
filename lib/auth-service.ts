@@ -21,7 +21,10 @@ export async function getSelf() {
   return user;
 }
 
-export async function getSelfByUsername(username: string) {
+export async function getSelfByUsername(
+  username: string,
+  includeStream: boolean
+) {
   const self = await currentUser();
 
   if (!self || !self.username) {
@@ -33,7 +36,7 @@ export async function getSelfByUsername(username: string) {
       username,
     },
     include: {
-      stream: true,
+      stream: includeStream,
     },
   });
 

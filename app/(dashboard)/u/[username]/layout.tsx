@@ -15,7 +15,7 @@ async function CreatorLayout({
   children,
   params: { username },
 }: CreatorLayoutProps) {
-  const self = await getSelfByUsername(username);
+  const self = await getSelfByUsername(username, false);
 
   if (!self) {
     redirect('/');

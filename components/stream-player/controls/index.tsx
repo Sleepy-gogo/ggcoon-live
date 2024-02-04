@@ -1,6 +1,7 @@
 import { FullscreenControl } from './fullscreen-control';
 import { VolumeControl } from './volume-control';
 import { PlayPauseButton } from './play-pause-control';
+import { ChatToggleButton } from './chat-toggle-control';
 
 interface ControlsProps {
   wrapperRef: React.RefObject<HTMLDivElement>;
@@ -15,7 +16,10 @@ export function Controls({ wrapperRef, videoRef }: ControlsProps) {
           <PlayPauseButton videoRef={videoRef} />
           <VolumeControl videoRef={videoRef} />
         </div>
-        <FullscreenControl wrapperRef={wrapperRef} />
+        <div className="flex items-center gap-2">
+          <ChatToggleButton />
+          <FullscreenControl wrapperRef={wrapperRef} />
+        </div>
       </div>
     </div>
   );
