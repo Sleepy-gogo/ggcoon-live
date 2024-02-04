@@ -20,7 +20,7 @@ export function ChatToggle({ className }: ChatToggleProps) {
     <Hint label={label} side="bottom" asChild>
       <Button
         className={cn(
-          'bg-transparent p-2 hover:bg-white/10 rounded-lg absolute hidden lg:block',
+          'bg-transparent p-2 hover:bg-white/10 rounded-lg hidden lg:block',
           className
         )}
         onClick={onToggle}
