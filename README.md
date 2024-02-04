@@ -58,11 +58,17 @@ cp .env.example .env
 
 - Update the file with your own values.
 
-> Clerk has a quick **Next.js** setup to get your _public_ and _secret keys_.
+#### Clerk
 
-> When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https:yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
+Clerk has a quick **Next.js** setup to get your _public_ and _secret keys_.
 
-> You can also generate your _API keys_ in the settings tab on **Livekit**. Follow the indicated format in the example for the wss and api url.
+When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https:yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
+
+#### Livekit
+
+You can also generate your _API keys_ in the settings tab on **Livekit**. Follow the indicated format in the example for the wss and api url.
+
+**Livekit** is fully open-source, and allows for self-hosting. See the [livekit.io](https://docs.livekit.io/realtime/self-hosting/) documentation for more information.
 
 3. Ensure you have the Prisma CLI installed, run the migrations, then generate the prisma client:
 
