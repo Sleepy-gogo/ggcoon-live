@@ -13,11 +13,11 @@ export function Logo() {
   return (
     <Link href="/" className="shrink-0">
       <div className="flex items-center gap-x-4 hover:opacity-75 transition">
-        <div className="bg-white rounded-full px-1.5 py-3">
-          <Image src="/RaccoonIcon.svg" alt="logo" width={45} height={45} />
+        <div className="bg-white rounded-full p-1.5">
+          <Image src="/crowned-racc.svg" alt="logo" width={45} height={45} />
         </div>
         <div className={cn('text-white hidden lg:block', poppins.className)}>
-          <p className="text-lg font-semibold">GGCoon.TV</p>
+          <p className="text-lg font-semibold">GGCoon.live</p>
           <p className="text-xs text-muted-foreground">Creator tools</p>
         </div>
       </div>

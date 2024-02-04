@@ -1,4 +1,4 @@
-<h1 align="center">GGCoon.TV<img alt="Comet" src="https://fonts.gstatic.com/s/e/notoemoji/latest/2604_fe0f/512.webp" width="40"></h1>
+<h1 align="center">GGCoon.live<img alt="Comet" src="https://fonts.gstatic.com/s/e/notoemoji/latest/2604_fe0f/512.webp" width="40"></h1>
 
 <p align="center">
   <b>Built using:</b><br/>
@@ -17,7 +17,7 @@
   
 </p>
 
-## 📌 What is GGCoon.TV?
+## 📌 What is GGCoon.live?
 
 This is a simple Twitch Clone, made for learning purposes. Feel free to fork this repo, and add your own features, or just use it as a starter for your own project.
 
@@ -41,9 +41,9 @@ And that you have an account on:
 1. Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/Sleepy-gogo/ggcoon-tv.git
+git clone https://github.com/Sleepy-gogo/ggcoon-live.git
 
-cd ggcoon-tv
+cd ggcoon-live
 
 npm install # (Or any other package manager equivalent command)
 ```

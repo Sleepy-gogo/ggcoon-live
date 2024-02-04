@@ -11,11 +11,11 @@ const poppins = Poppins({
 export function Logo() {
   return (
     <div className="flex flex-col items-center justify-center gap-y-2">
-      <div className="bg-white text-black rounded-full px-2 py-4">
-        <Image src="/RaccoonIcon.svg" alt="logo" width={80} height={80} />
+      <div className="bg-white text-black rounded-full p-1.5">
+        <Image src="/crowned-racc.svg" alt="logo" width={80} height={80} />
       </div>
       <div className={cn('flex flex-col items-center', poppins.className)}>
-        <p className="text-xl font-semibold">GGCoon.TV</p>
+        <p className="text-xl font-semibold">GGCoon.live</p>
         <p className="text-sm text-muted-foreground">The chat is waiting.</p>
       </div>
     </div>
