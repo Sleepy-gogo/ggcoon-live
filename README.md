@@ -62,7 +62,7 @@ cp .env.example .env
 
 Clerk has a quick **Next.js** setup to get your _public_ and _secret keys_.
 
-When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https:yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
+When creating the **Clerk Webhook**, make sure you point to the right endpoint, _https://yourdomain.com/api/webhooks/clerk_, as well as listen **only** to _user events_.
 
 #### Livekit
 
