@@ -43,10 +43,10 @@ export function ChatForm({
     if (!value || chatBlocked) return;
 
     if (isChatDelayed && !delayBlocked) {
+      onSubmitAction();
       setDelayBlocked(true);
       setTimeout(() => {
         setDelayBlocked(false);
-        onSubmitAction();
       }, 3000);
       return;
     }
@@ -63,7 +63,9 @@ export function ChatForm({
         <Input
           value={value}
           onChange={(e) => onChangeAction(e.target.value)}
-          placeholder="Message"
+          placeholder={
+            delayBlocked ? 'Please wait 3s to chat.' : 'Send a message'
+          }
           disabled={chatBlocked}
           className={cn(
             'border-white/10 h-10',

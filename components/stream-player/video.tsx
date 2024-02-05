@@ -35,3 +35,11 @@ export function Video({ hostName, hostIdentity }: VideoProps) {
 
   return <div className="aspect-video border-b">{content}</div>;
 }
+
+export function VideoSkeleton() {
+  return (
+    <div className="aspect-video border-b rounded-md">
+      <Loading />
+    </div>
+  );
+}

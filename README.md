@@ -103,9 +103,11 @@ npm run start
 - Dashboard for creators
 - Streaming
 - Chat
+- Community tab on chat panel
 
 ## 📝 Planned Additions
 
 - Profile Page
-- Moderators
-- Allow "Moderators" to access the creator's dashboard
+- Stream info
+- Searching users
+- Unblocking page

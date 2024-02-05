@@ -44,7 +44,7 @@ export function ChatExtra({ isDelayed, followersOnly }: ChatExtraProps) {
   if (!text) return null;
 
   return (
-    <Hint label={label} side="top">
+    <Hint label={label} side="top" align="start">
       <div className="p-2 text-muted-foreground bg-white/5 border-white/10 w-[calc(100%-2.75rem)] rounded-t-md flex items-center gap-x-2">
         <Info className="size-4" />
         <p className="font-semibold text-xs">{text}</p>

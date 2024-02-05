@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useParticipants } from '@livekit/components-react';
 import { UserRoundMinus } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useDebounce } from 'usehooks-ts';
+import { Viewer } from './viewer';
+import { LocalParticipant, RemoteParticipant } from 'livekit-client';
 
 interface CommunityTabProps {
   viewerName: string;
@@ -21,6 +23,20 @@ export function CommunityTab({
   const [value, setValue] = useState('');
   const debouncedValue = useDebounce(value, 500);
   const participants = useParticipants();
+
+  const participantsFilter = useMemo(() => {
+    const unDuped = participants.reduce((acc, participant) => {
+      const hostViewerIdentity = `host-${participant.identity}`;
+      if (!acc.some((p) => p.identity === hostViewerIdentity)) {
+        acc.push(participant);
+      }
+      return acc;
+    }, [] as (RemoteParticipant | LocalParticipant)[]);
+
+    return unDuped.filter((participant) =>
+      participant.name?.toLowerCase().includes(debouncedValue.toLowerCase())
+    );
+  }, [participants, debouncedValue]);
 
   if (isHidden)
     return (
@@ -42,6 +58,15 @@ export function CommunityTab({
         <p className="text-center text-muted-foreground text-sm hidden last:block">
           No search results.
         </p>
+        {participantsFilter.map((participant) => (
+          <Viewer
+            key={participant.identity}
+            viewerName={viewerName}
+            hostName={hostName}
+            participantName={participant.name}
+            participantIdentity={participant.identity}
+          />
+        ))}
       </ScrollArea>
     </div>
   );

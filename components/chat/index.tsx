@@ -11,8 +11,8 @@ import { ConnectionState } from 'livekit-client';
 import { useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { ChatHeader, ChatHeaderSkeleton } from './chat-header';
-import { ChatForm } from './chat-form';
-import { MessageList } from './message-list';
+import { ChatForm, ChatFormSkeleton } from './chat-form';
+import { MessageList, MessageListSkeleton } from './message-list';
 import { CommunityTab } from './community-tab';
 
 interface ChatProps {
@@ -88,6 +88,16 @@ export function Chat({
           isHidden={isHidden}
         />
       )}
+    </div>
+  );
+}
+
+export function ChatSkeleton() {
+  return (
+    <div className="flex flex-col border-2 border-l border-b pt-0 h-[calc(100vh-80px)]">
+      <ChatHeaderSkeleton />
+      <MessageListSkeleton />
+      <ChatFormSkeleton />
     </div>
   );
 }
