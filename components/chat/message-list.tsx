@@ -2,6 +2,7 @@ import { ReceivedChatMessage } from '@livekit/components-react';
 
 import { MessageSquareOff, MessageSquareHeart } from 'lucide-react';
 import { ChatMessage } from './chat-message';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface MessageListProps {
   messages: ReceivedChatMessage[];
@@ -29,6 +30,14 @@ export function MessageList({ messages, isHidden }: MessageListProps) {
           message={message}
         />
       ))}
+    </div>
+  );
+}
+
+export function MessageListSkeleton() {
+  return (
+    <div className="flex h-full items-center justify-center">
+      <Skeleton className="w-1/2 h-8" />
     </div>
   );
 }

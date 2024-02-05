@@ -29,7 +29,7 @@ export function ToggleCard({ field, value, label }: ToggleCardProps) {
   };
 
   return (
-    <Card label={label}>
+    <Card label={label} className="mx-auto w-auto sm:mx-0">
       <Switch disabled={isPending} onCheckedChange={onChange} checked={value} />
     </Card>
   );

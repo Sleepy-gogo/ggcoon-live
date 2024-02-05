@@ -13,6 +13,7 @@ import { useMediaQuery } from 'usehooks-ts';
 import { ChatHeader, ChatHeaderSkeleton } from './chat-header';
 import { ChatForm } from './chat-form';
 import { MessageList } from './message-list';
+import { CommunityTab } from './community-tab';
 
 interface ChatProps {
   viewerName: string;
@@ -80,7 +81,13 @@ export function Chat({
           />
         </>
       )}
-      {variant === ChatVariant.COMMUNITY && <p>Community</p>}
+      {variant === ChatVariant.COMMUNITY && (
+        <CommunityTab
+          viewerName={viewerName}
+          hostName={hostName}
+          isHidden={isHidden}
+        />
+      )}
     </div>
   );
 }

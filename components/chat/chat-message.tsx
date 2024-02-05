@@ -20,7 +20,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
         >
           {message.from?.name}
         </span>
-        <span className="text-sm break-all">: {message.message}</span>
+        <span className="text-sm break-words">: {message.message}</span>
       </p>
     </div>
   );
