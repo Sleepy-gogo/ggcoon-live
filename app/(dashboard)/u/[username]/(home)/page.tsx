@@ -18,14 +18,22 @@ async function CreatorPage({ params: { username } }: CreatorPageProps) {
   }
 
   const streamOptions = {
+    thumbnailUrl: user.stream.thumbnailUrl || '',
+    streamName: user.stream.name,
     isChatEnabled: user.stream.isChatEnabled,
     isChatDelayed: user.stream.isChatDelayed,
-    followersOnly: user.stream.followersOnly,
+    followersOnly: user.stream.followersOnly
   };
+
+  const userWithoutStream = { ...user, stream: null };
 
   return (
     <div className="h-full">
-      <StreamPlayer user={user} streamOptions={streamOptions} isFollowing />
+      <StreamPlayer
+        user={userWithoutStream}
+        streamOptions={streamOptions}
+        isFollowing
+      />
     </div>
   );
 }

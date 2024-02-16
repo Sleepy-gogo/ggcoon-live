@@ -1,7 +1,7 @@
 'use client';
 
-import { FollowButton } from './follow-button';
-import { BlockButton } from './block-button';
+import { FollowButton } from '@/components/follow-button';
+import { BlockButton } from '@/components/block-button';
 
 interface ActionsProps {
   isFollowing: boolean;

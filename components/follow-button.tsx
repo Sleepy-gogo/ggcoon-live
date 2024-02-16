@@ -2,20 +2,27 @@ import { onFollow, onUnfollow } from '@/actions/follow';
 import {
   HoverableButton,
   HoverableButtonDefault,
-  HoverableButtonHover,
+  HoverableButtonHover
 } from '@/components/hoverable-button';
 import { PendingIcon } from '@/components/pending-icon';
 import { Heart, HeartCrack } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
 
 interface FollowButtonProps {
   isFollowing: boolean;
   userId: string;
+  isHost?: boolean;
 }
 
-export function FollowButton({ isFollowing, userId }: FollowButtonProps) {
+export function FollowButton({
+  isFollowing,
+  userId,
+  isHost = false
+}: FollowButtonProps) {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const handleFollow = () => {
     startTransition(async () => {
@@ -42,6 +49,9 @@ export function FollowButton({ isFollowing, userId }: FollowButtonProps) {
   };
 
   const followButton = () => {
+    if (isHost) {
+      return toast.info('Cannot unfollow yourself');
+    }
     if (isFollowing) {
       handleUnfollow();
     } else {
@@ -52,8 +62,8 @@ export function FollowButton({ isFollowing, userId }: FollowButtonProps) {
   return (
     <HoverableButton
       variant={isFollowing ? 'bipolar' : 'primary'}
-      className="group w-32"
-      disabled={isPending}
+      className="group w-full lg:w-32"
+      disabled={isPending || isHost}
       onClick={followButton}
     >
       {isFollowing ? (
