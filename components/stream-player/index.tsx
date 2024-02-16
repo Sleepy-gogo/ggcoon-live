@@ -33,7 +33,6 @@ export function StreamPlayer({
   const { name, identity, token } = useViewerToken(user.id);
   const { collapsed } = useChatbox((state) => state);
 
-  console.log(user);
   if (!token || !name || !identity) return <StreamPlayerSkeleton />;
 
   return (
@@ -62,7 +61,7 @@ export function StreamPlayer({
           <InfoCard
             hostIdentity={user.id}
             viewerIdentity={identity}
-            name={name}
+            name={streamOptions.streamName}
             thumbnailUrl={streamOptions.thumbnailUrl}
           />
         </div>

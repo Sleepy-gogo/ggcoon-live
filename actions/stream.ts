@@ -18,16 +18,17 @@ export async function updateStream(values: Partial<Stream>) {
 
     const validData = {
       name: values.name,
+      thumbnailUrl: values.thumbnailUrl,
       isChatEnabled: values.isChatEnabled,
       followersOnly: values.followersOnly,
-      isChatDelayed: values.isChatDelayed,
+      isChatDelayed: values.isChatDelayed
     };
 
     const updatedStream = await db.stream.update({
       where: {
-        userId: self.id,
+        userId: self.id
       },
-      data: validData,
+      data: validData
     });
 
     revalidatePath(`/u/${self.username}/chat`);

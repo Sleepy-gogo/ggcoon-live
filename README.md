@@ -35,6 +35,7 @@ And that you have an account on:
 
 - [Clerk](https://clerk.com/)
 - [LiveKit](https://livekit.io/)
+- [Uploadthing](https://uploadthing.com/)
 
 ### Installation
 
@@ -70,6 +71,10 @@ You can also generate your _API keys_ in the settings tab on **Livekit**. Follow
 
 **Livekit** is fully open-source, and allows for self-hosting. See the [livekit.io](https://docs.livekit.io/realtime/self-hosting/) documentation for more information.
 
+#### Uploadthing
+
+Create your app in [Uploadthing](https://uploadthing.com/), then go to the **API Keys** tab, and copy your secret and app ip onto the .env file.
+
 3. Ensure you have the Prisma CLI installed, run the migrations, then generate the prisma client:
 
 ```bash
@@ -104,7 +109,7 @@ npm run start
 - Streaming
 - Chat
 - Community tab on chat panel
-- Stream info
+- Customizable stream info
 
 ## 📝 Planned Additions
 

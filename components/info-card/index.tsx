@@ -1,7 +1,10 @@
 'use client';
 
 import { Pencil } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { InfoField } from './info-field';
+import Image from 'next/image';
+import { InfoModal } from './info-modal';
 
 interface InfoCardProps {
   hostIdentity: string;
@@ -36,6 +39,25 @@ export function InfoCard({
               Maximize visibility
             </p>
           </div>
+          <InfoModal initialName={name} initialThumbnailUrl={thumbnailUrl} />
+        </div>
+        <Separator />
+        <div className="p-4 lg:p-6 space-y-4">
+          <InfoField title="Name">
+            <p className="text-sm font-semibold">{name}</p>
+          </InfoField>
+          <InfoField title="Thumbnail">
+            {!!thumbnailUrl && (
+              <div className="relative aspect-video rounded-md overflow-hidden w-[200px] border border-white/10">
+                <Image
+                  src={thumbnailUrl}
+                  alt={`${name} thumbnail`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+          </InfoField>
         </div>
       </div>
     </div>
