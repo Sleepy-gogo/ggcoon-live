@@ -127,7 +127,12 @@ export function InfoModal({
           </div>
           <div className="flex justify-between">
             <DialogClose asChild>
-              <Button ref={closeRef} variant="outline" disabled={isPending}>
+              <Button
+                type="button"
+                ref={closeRef}
+                variant="outline"
+                disabled={isPending}
+              >
                 Cancel
               </Button>
             </DialogClose>

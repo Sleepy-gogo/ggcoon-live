@@ -11,10 +11,13 @@ import { Video, VideoSkeleton } from './video';
 import { Chat, ChatSkeleton } from '@/components/chat';
 import { ChatToggle } from '@/components/chat/chat-toggle';
 import { UserHeader, UserHeaderSkeleton } from '@/components/user-header';
-import { InfoCard } from '../info-card';
+import { InfoCard } from '@/components/info-card';
+import { AboutCard } from '@/components/about-card';
 
 interface StreamPlayerProps {
-  user: User;
+  user: User & {
+    _count: { followers: number };
+  };
   streamOptions: {
     thumbnailUrl: string;
     streamName: string;
@@ -63,6 +66,13 @@ export function StreamPlayer({
             viewerIdentity={identity}
             name={streamOptions.streamName}
             thumbnailUrl={streamOptions.thumbnailUrl}
+          />
+          <AboutCard
+            hostName={user.username}
+            hostIdentity={user.id}
+            bio={user.bio || ''}
+            followersCount={user._count.followers}
+            viewerIdentity={identity}
           />
         </div>
         <div className={cn('col-span-1', collapsed && 'lg:hidden')}>

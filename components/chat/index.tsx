@@ -4,7 +4,7 @@ import { useChatbox, ChatVariant } from '@/store/use-chatbox';
 import {
   useChat,
   useConnectionState,
-  useRemoteParticipant,
+  useRemoteParticipant
 } from '@livekit/components-react';
 import { ReceivedChatMessage } from '@livekit/components-core';
 import { ConnectionState } from 'livekit-client';
@@ -32,7 +32,7 @@ export function Chat({
   hostName,
   hostIdentity,
   streamOptions,
-  isFollowing,
+  isFollowing
 }: ChatProps) {
   const matches = useMediaQuery('(max-width: 1024px)');
   const { variant, setCollapsed } = useChatbox((state) => state);
@@ -63,7 +63,7 @@ export function Chat({
   };
 
   return (
-    <div className="flex flex-col bg-background border-l border-b pt-0 h-full lg:h-[calc(100vh-80px)] w-full">
+    <div className="flex flex-col bg-background border-l border-b mt-6 lg:mt-0 pt-0 min-h-96 lg:min-h-0 h-full lg:h-[calc(100vh-80px)] w-full">
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
@@ -75,7 +75,7 @@ export function Chat({
             isHidden={isHidden}
             streamOptions={{
               isChatDelayed,
-              followersOnly,
+              followersOnly
             }}
             isFollowing={isFollowing}
           />

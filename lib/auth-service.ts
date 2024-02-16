@@ -10,8 +10,8 @@ export async function getSelf() {
 
   const user = await db.user.findUnique({
     where: {
-      externalUserId: self.id,
-    },
+      externalUserId: self.id
+    }
   });
 
   if (!user) {
@@ -33,11 +33,16 @@ export async function getSelfByUsername(
 
   const user = await db.user.findUnique({
     where: {
-      username,
+      username
     },
     include: {
       stream: includeStream,
-    },
+      _count: {
+        select: {
+          followers: true
+        }
+      }
+    }
   });
 
   if (!user) {
