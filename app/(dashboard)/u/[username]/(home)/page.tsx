@@ -33,6 +33,7 @@ async function CreatorPage({ params: { username } }: CreatorPageProps) {
         user={userWithoutStream}
         streamOptions={streamOptions}
         isFollowing
+        isBlocked={false}
       />
     </div>
   );

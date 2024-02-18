@@ -5,7 +5,7 @@ export async function getSelf() {
   const self = await currentUser();
 
   if (!self || !self.username) {
-    throw new Error('Not logged in');
+    throw new Error("You're not logged in");
   }
 
   const user = await db.user.findUnique({
@@ -28,7 +28,7 @@ export async function getSelfByUsername(
   const self = await currentUser();
 
   if (!self || !self.username) {
-    throw new Error('Not logged in');
+    throw new Error("You're not logged in");
   }
 
   const user = await db.user.findUnique({

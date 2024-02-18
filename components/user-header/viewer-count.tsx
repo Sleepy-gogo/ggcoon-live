@@ -8,7 +8,7 @@ interface ViewerCountProps {
 }
 
 export function ViewerCount({ isLive, viewerCount }: ViewerCountProps) {
-  const label = isLive ? 'Viewers' : 'Strem is offline';
+  const label = isLive ? 'Viewers' : 'Stream is offline';
   const Icon = isLive ? UserRound : UserRoundX;
 
   return (

@@ -22,7 +22,6 @@ export function FollowButton({
   isHost = false
 }: FollowButtonProps) {
   const [isPending, startTransition] = useTransition();
-  const router = useRouter();
 
   const handleFollow = () => {
     startTransition(async () => {
@@ -30,8 +29,8 @@ export function FollowButton({
         .then((data) => {
           toast.success(`Followed @${data.following.username}`);
         })
-        .catch(() => {
-          toast.error('Failed to follow user');
+        .catch((error) => {
+          toast.error(`Failed to follow user. ${error.message}.`);
         });
     });
   };
@@ -42,8 +41,8 @@ export function FollowButton({
         .then((data) => {
           toast.success(`Unfollowed @${data.following.username}`);
         })
-        .catch(() => {
-          toast.error('Failed to unfollow user');
+        .catch((error) => {
+          toast.error(`Failed to unfollow user. ${error.message}.`);
         });
     });
   };

@@ -20,15 +20,16 @@ export function Viewer({
   hostName,
   viewerName,
   participantName,
-  participantIdentity,
+  participantIdentity
 }: ViewerProps) {
   const [isPending, startTransition] = useTransition();
   const color = stringToColor(participantName || '');
   const isSelf = participantName === viewerName;
+  const participantIsHost = hostName === participantName;
   const isHost = hostName === viewerName;
 
   const handleBlock = () => {
-    if (!participantName || isSelf || isHost) return;
+    if (!participantName || isSelf || participantIsHost) return;
 
     startTransition(() => {
       onBlock(participantIdentity)
@@ -45,7 +46,7 @@ export function Viewer({
       )}
     >
       <div className="flex items-center gap-2">
-        {isHost ? (
+        {participantIsHost ? (
           <Crown className="size-4 text-amber-400 fill-amber-400" />
         ) : (
           <UserRound className="size-4 text-primary-400 fill-primary-400" />

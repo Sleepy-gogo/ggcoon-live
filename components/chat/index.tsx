@@ -6,9 +6,8 @@ import {
   useConnectionState,
   useRemoteParticipant
 } from '@livekit/components-react';
-import { ReceivedChatMessage } from '@livekit/components-core';
 import { ConnectionState } from 'livekit-client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { ChatHeader, ChatHeaderSkeleton } from './chat-header';
 import { ChatForm, ChatFormSkeleton } from './chat-form';
@@ -39,7 +38,7 @@ export function Chat({
   const connectionState = useConnectionState();
   const participant = useRemoteParticipant(hostIdentity);
   const [value, setValue] = useState('');
-  const { chatMessages: rawMessages, send } = useChat();
+  const { chatMessages, send } = useChat();
 
   const { isChatEnabled, isChatDelayed, followersOnly } = streamOptions;
   const isOnline = connectionState === ConnectionState.Connected && participant;
@@ -51,10 +50,6 @@ export function Chat({
     }
   }, [matches, setCollapsed]);
 
-  const messages = useMemo<ReceivedChatMessage[]>(() => {
-    return rawMessages.sort((a, b) => b.timestamp - a.timestamp);
-  }, [rawMessages]);
-
   const sendMessage = () => {
     if (!send) return;
 
@@ -63,11 +58,11 @@ export function Chat({
   };
 
   return (
-    <div className="flex flex-col bg-background border-l border-b mt-6 lg:mt-0 pt-0 min-h-96 lg:min-h-0 h-full lg:h-[calc(100vh-80px)] w-full">
+    <div className="flex flex-col bg-background border-l border-b min-h-96 lg:min-h-0 h-full lg:h-[calc(100vh-80px)] w-full">
       <ChatHeader />
       {variant === ChatVariant.CHAT && (
         <>
-          <MessageList messages={messages} isHidden={isHidden} />
+          <MessageList messages={chatMessages} isHidden={isHidden} />
           <ChatForm
             onSubmitAction={sendMessage}
             value={value}

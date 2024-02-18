@@ -4,7 +4,7 @@ import { ConnectionState, Track } from 'livekit-client';
 import {
   useConnectionState,
   useRemoteParticipant,
-  useTracks,
+  useTracks
 } from '@livekit/components-react';
 import { Offline } from './offline';
 import { Loading } from './loading';
@@ -20,7 +20,7 @@ export function Video({ hostName, hostIdentity }: VideoProps) {
   const participant = useRemoteParticipant(hostIdentity);
   const tracks = useTracks([
     Track.Source.Camera,
-    Track.Source.Microphone,
+    Track.Source.Microphone
   ]).filter((track) => track.participant.identity === hostIdentity);
 
   let content;
@@ -33,13 +33,19 @@ export function Video({ hostName, hostIdentity }: VideoProps) {
     content = <Live tracks={tracks} />;
   }
 
-  return <div className="aspect-video border-b">{content}</div>;
+  return (
+    <div className="bg-black/40 border-b">
+      <div className="aspect-video max-h-[700px] mx-auto">{content}</div>
+    </div>
+  );
 }
 
 export function VideoSkeleton() {
   return (
-    <div className="aspect-video border-b rounded-md">
-      <Loading />
+    <div className="bg-black/40 border-b">
+      <div className="aspect-video mx-auto max-h-[700px] rounded-md">
+        <Loading />
+      </div>
     </div>
   );
 }

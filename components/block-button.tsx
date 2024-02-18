@@ -2,7 +2,7 @@ import { onBlock, onUnblock } from '@/actions/block';
 import {
   HoverableButton,
   HoverableButtonDefault,
-  HoverableButtonHover,
+  HoverableButtonHover
 } from '@/components/hoverable-button';
 import { PendingIcon } from '@/components/pending-icon';
 import { BadgeHelp, BadgeMinus, Ban } from 'lucide-react';
@@ -12,16 +12,21 @@ import { toast } from 'sonner';
 interface BlockButtonProps {
   isBlocked: boolean;
   userId: string;
+  isHost: boolean;
 }
 
-export function BlockButton({ isBlocked, userId }: BlockButtonProps) {
+export function BlockButton({
+  isBlocked,
+  userId,
+  isHost = false
+}: BlockButtonProps) {
   const [isPending, startTransition] = useTransition();
 
   const handleBlock = () => {
     startTransition(async () => {
       onBlock(userId)
         .then((data) => {
-          toast.success(`Blocked @${data.blocked.username}`);
+          toast.success(`Blocked @${data?.blocked.username || 'guest'}`);
         })
         .catch(() => {
           toast.error('Failed to block user');
@@ -42,6 +47,9 @@ export function BlockButton({ isBlocked, userId }: BlockButtonProps) {
   };
 
   const blockButton = () => {
+    if (isHost) {
+      return toast.info('Cannot unfollow yourself');
+    }
     if (isBlocked) {
       handleUnblock();
     } else {
@@ -52,8 +60,8 @@ export function BlockButton({ isBlocked, userId }: BlockButtonProps) {
   return (
     <HoverableButton
       variant="destructive-outline"
-      className="group w-28"
-      disabled={isPending}
+      className="group w-full lg:w-28"
+      disabled={isPending || isHost}
       onClick={blockButton}
     >
       {isBlocked ? (

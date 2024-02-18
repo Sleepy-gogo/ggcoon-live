@@ -26,12 +26,14 @@ interface StreamPlayerProps {
     followersOnly: boolean;
   };
   isFollowing: boolean;
+  isBlocked: boolean;
 }
 
 export function StreamPlayer({
   user,
   streamOptions,
-  isFollowing
+  isFollowing,
+  isBlocked
 }: StreamPlayerProps) {
   const { name, identity, token } = useViewerToken(user.id);
   const { collapsed } = useChatbox((state) => state);
@@ -48,7 +50,7 @@ export function StreamPlayer({
         serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL}
         className={cn(
           'grid grid-cols-1 gap-y-0 lg:grid-cols-3 2xl:grid-cols-6 h-full',
-          collapsed && 'lg:grid-cols-2'
+          collapsed && 'lg:grid-cols-2 2xl:grid-cols-5'
         )}
       >
         <div className="space-y-4 col-span-1 lg:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar">
@@ -58,6 +60,7 @@ export function StreamPlayer({
             hostIdentity={user.id}
             viewerIdentity={identity}
             isFollowing={isFollowing}
+            isBlocked={isBlocked}
             imageUrl={user.imageUrl}
             name={streamOptions.streamName}
           />

@@ -4,6 +4,7 @@ import { getUserByUsername } from '@/lib/user-service';
 import { notFound } from 'next/navigation';
 import { Actions } from './_components/actions';
 import { isBlockedByUser, userIsBlockedBy } from '@/lib/block-service';
+import { StreamPlayer } from '@/components/stream-player';
 
 interface UserPageProps {
   params: {
@@ -26,22 +27,26 @@ async function UserPage({ params: { username } }: UserPageProps) {
   const isFollowing = await isFollowingUser(user.id);
   const isBlocked = await isBlockedByUser(user.id);
 
+  const streamOptions = {
+    thumbnailUrl: user.stream?.thumbnailUrl || '',
+    streamName: user.stream?.name || '',
+    isChatEnabled: user.stream?.isChatEnabled || false,
+    isChatDelayed: user.stream?.isChatDelayed || false,
+    followersOnly: user.stream?.followersOnly || false
+  };
+
+  const userWithoutStream = {
+    ...user,
+    stream: null
+  };
+
   return (
-    <div>
-      <h1>{user?.username}</h1>
-      <p>{user?.bio}</p>
-      <p>Follows: {`${isFollowing}`}</p>
-      <UserAvatar
-        username={user?.username}
-        imageUrl={user?.imageUrl}
-        size="lg"
-      />
-      <Actions
-        isFollowing={isFollowing}
-        isBlocked={isBlocked}
-        userId={user?.id}
-      />
-    </div>
+    <StreamPlayer
+      user={userWithoutStream}
+      isFollowing={isFollowing}
+      isBlocked={isBlocked}
+      streamOptions={streamOptions}
+    />
   );
 }
 

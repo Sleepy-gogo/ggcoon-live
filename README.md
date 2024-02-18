@@ -110,9 +110,10 @@ npm run start
 - Chat
 - Community tab on chat panel
 - Customizable stream info
+- Profile Page
 
 ## 📝 Planned Additions
 
-- Profile Page
+- Home page
 - Searching users
 - Unblocking page

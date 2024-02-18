@@ -22,7 +22,7 @@ export function AboutCard({
   const followersLabel = followersCount === 1 ? 'follower' : 'followers';
 
   return (
-    <div className="px-4">
+    <div className="px-4 pb-4">
       <div className="group rounded-xl bg-background p-6 lg:p-10 flex flex-col gap-y-3">
         <div className="flex items-center justify-between">
           <h2 className="flex items-center gap-x-2 font-semibold text-lg lg:text-2xl">

@@ -16,6 +16,7 @@ interface UserHeaderProps {
   viewerIdentity: string;
   imageUrl: string;
   isFollowing: boolean;
+  isBlocked: boolean;
   name: string;
 }
 
@@ -25,6 +26,7 @@ export function UserHeader({
   viewerIdentity,
   imageUrl,
   isFollowing,
+  isBlocked,
   name
 }: UserHeaderProps) {
   const participants = useParticipants();
@@ -57,6 +59,7 @@ export function UserHeader({
       </div>
       <Actions
         isHost={isHost}
+        isBlocked={isBlocked}
         isFollowing={isFollowing}
         hostIdentity={hostIdentity}
       />
