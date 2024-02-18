@@ -1,8 +1,6 @@
-import { UserAvatar } from '@/components/user-avatar';
 import { isFollowingUser } from '@/lib/follow-service';
 import { getUserByUsername } from '@/lib/user-service';
 import { notFound } from 'next/navigation';
-import { Actions } from './_components/actions';
 import { isBlockedByUser, userIsBlockedBy } from '@/lib/block-service';
 import { StreamPlayer } from '@/components/stream-player';
 

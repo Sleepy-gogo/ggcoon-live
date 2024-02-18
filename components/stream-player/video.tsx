@@ -35,7 +35,9 @@ export function Video({ hostName, hostIdentity }: VideoProps) {
 
   return (
     <div className="bg-black/40 border-b">
-      <div className="aspect-video max-h-[700px] mx-auto">{content}</div>
+      <div className="aspect-video max-h-[calc(100vh*0.75)] mx-auto">
+        {content}
+      </div>
     </div>
   );
 }
