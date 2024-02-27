@@ -2,6 +2,7 @@ import { Webhook } from 'svix';
 import { headers } from 'next/headers';
 import { WebhookEvent } from '@clerk/nextjs/server';
 import { db } from '@/lib/db';
+import { resetIngresses } from '@/actions/ingress';
 
 export async function POST(req: Request) {
   const WEBHOOK_SECTET = process.env.CLERK_WEBHOOK_SECRET;
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
     event = webhook.verify(body, {
       'svix-id': svix_id,
       'svix-timestamp': svix_timestap,
-      'svix-signature': svix_signature,
+      'svix-signature': svix_signature
     }) as WebhookEvent;
   } catch (error) {
     console.error('Error verifying webhook: ', error);
@@ -49,10 +50,10 @@ export async function POST(req: Request) {
             imageUrl: payload.data.image_url,
             stream: {
               create: {
-                name: `@${payload.data.username}'s Livestream`,
-              },
-            },
-          },
+                name: `@${payload.data.username}'s Livestream`
+              }
+            }
+          }
         });
       } catch {
         return new Response('User already exists', { status: 400 });
@@ -62,8 +63,8 @@ export async function POST(req: Request) {
       try {
         await db.user.delete({
           where: {
-            externalUserId: payload.data.id,
-          },
+            externalUserId: payload.data.id
+          }
         });
       } catch {
         return new Response('User not found', { status: 404 });
@@ -71,14 +72,16 @@ export async function POST(req: Request) {
       break;
     case 'user.updated':
       try {
+        await resetIngresses(payload.data.id);
+
         await db.user.update({
           where: {
-            externalUserId: payload.data.id,
+            externalUserId: payload.data.id
           },
           data: {
             username: payload.data.username,
-            imageUrl: payload.data.image_url,
-          },
+            imageUrl: payload.data.image_url
+          }
         });
       } catch {
         return new Response('User not found', { status: 404 });
