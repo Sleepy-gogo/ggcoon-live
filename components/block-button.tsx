@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 interface BlockButtonProps {
   isBlocked: boolean;
   userId: string;
-  isHost: boolean;
+  isHost?: boolean;
 }
 
 export function BlockButton({

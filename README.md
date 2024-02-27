@@ -111,9 +111,6 @@ npm run start
 - Community tab on chat panel
 - Customizable stream info
 - Profile Page
-
-## 📝 Planned Additions
-
 - Home page
 - Searching users
 - Unblocking page

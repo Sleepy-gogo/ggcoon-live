@@ -5,7 +5,7 @@ export async function isBlockedByUser(id: string) {
   try {
     const self = await getSelf();
     const otherUser = await db.user.findUnique({
-      where: { id },
+      where: { id }
     });
 
     if (!otherUser) {
@@ -20,9 +20,9 @@ export async function isBlockedByUser(id: string) {
       where: {
         blockerId_blockedId: {
           blockerId: self.id,
-          blockedId: otherUser.id,
-        },
-      },
+          blockedId: otherUser.id
+        }
+      }
     });
 
     return !!existingBlock;
@@ -35,7 +35,7 @@ export async function userIsBlockedBy(id: string) {
   try {
     const self = await getSelf();
     const otherUser = await db.user.findUnique({
-      where: { id },
+      where: { id }
     });
 
     if (!otherUser) {
@@ -50,9 +50,9 @@ export async function userIsBlockedBy(id: string) {
       where: {
         blockerId_blockedId: {
           blockerId: otherUser.id,
-          blockedId: self.id,
-        },
-      },
+          blockedId: self.id
+        }
+      }
     });
 
     return !!existingBlock;
@@ -64,7 +64,7 @@ export async function userIsBlockedBy(id: string) {
 export async function blockUser(id: string) {
   const self = await getSelf();
   const otherUser = await db.user.findUnique({
-    where: { id },
+    where: { id }
   });
 
   if (!otherUser) {
@@ -79,9 +79,9 @@ export async function blockUser(id: string) {
     where: {
       blockerId_blockedId: {
         blockerId: self.id,
-        blockedId: otherUser.id,
-      },
-    },
+        blockedId: otherUser.id
+      }
+    }
   });
 
   if (existingBlock) {
@@ -91,18 +91,18 @@ export async function blockUser(id: string) {
   return await db.block.create({
     data: {
       blockerId: self.id,
-      blockedId: otherUser.id,
+      blockedId: otherUser.id
     },
     include: {
-      blocked: true,
-    },
+      blocked: true
+    }
   });
 }
 
 export async function unblockUser(id: string) {
   const self = await getSelf();
   const otherUser = await db.user.findUnique({
-    where: { id },
+    where: { id }
   });
 
   if (!otherUser) {
@@ -117,9 +117,9 @@ export async function unblockUser(id: string) {
     where: {
       blockerId_blockedId: {
         blockerId: self.id,
-        blockedId: otherUser.id,
-      },
-    },
+        blockedId: otherUser.id
+      }
+    }
   });
 
   if (!existingBlock) {
@@ -128,6 +128,19 @@ export async function unblockUser(id: string) {
 
   return await db.block.delete({
     where: { id: existingBlock.id },
-    include: { blocked: true },
+    include: { blocked: true }
+  });
+}
+
+export async function getBlockedUsers() {
+  const self = await getSelf();
+
+  return await db.block.findMany({
+    where: {
+      blockerId: self.id
+    },
+    include: {
+      blocked: true
+    }
   });
 }
